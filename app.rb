@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 require 'bundler'
 Bundler.require
-
+# Server : dirige ver le Router
 $:.unshift File.expand_path("./../lib", __FILE__)
-require "app/app_class"
-require "views/view_class"
+require "router" # Router
+require "controller" # Controller
 
-test1 = AppClass.new
-puts test1.test
 
-test2 = ViewClass.new
-puts test2.test
+def run_app
+  # appeler le router
+  Router.new.perform
+end
+
+run_app
